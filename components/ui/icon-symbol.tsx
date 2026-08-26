@@ -25,6 +25,7 @@ const MAPPING = {
   "live-tv": "live-tv",
   "settings": "settings",
   "play-arrow": "play-arrow",
+  "pause": "pause",
   "download": "download",
   "arrow-back": "arrow-back",
   "refresh": "refresh",
