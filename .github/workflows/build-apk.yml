@@ -54,20 +54,54 @@ jobs:
         
 
 
-      - name: Build APK with EAS
+      - name: Setup Java
       
-        uses: expo/expo-github-action@v8
+        uses: actions/setup-java@v4
         
         with:
         
-          eas-version: latest
+          distribution: temurin
           
-          token: ${{ secrets.EXPO_TOKEN }}
+          java-version: '17'
           
 
 
-      - run: eas build --platform android --profile preview --non-interactive --wait
+      - name: Generate Android project
       
+        run: pnpm exec expo prebuild --platform android --non-interactive
+        
+
+
+      - name: Build release APK
+      
+        working-directory: android
+        
+        run: ./gradlew assembleRelease
+        
+
+
+      - name: Upload APK artifact
+      
+        uses: actions/upload-artifact@v4
+        
+        with:
+        
+          name: yohan-tv-release-apk
+          
+          path: android/app/build/outputs/apk/release/app-release.apk
+          
+          if-no-files-found: error
+          
+
+
+
+
+
+
+
+
+
+
 
 
 
