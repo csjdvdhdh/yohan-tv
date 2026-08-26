@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { FlatList, Text, View } from "react-native";
 import { router, useFocusEffect } from "expo-router";
 import { MediaCard } from "@/components/media-card";
